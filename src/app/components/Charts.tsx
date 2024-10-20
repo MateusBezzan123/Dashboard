@@ -1,6 +1,15 @@
 import { Bar, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement } from 'chart.js'; 
 import styled from 'styled-components';
+import  Transaction  from '../public/transactions.json';
 
+ChartJS.register(
+  CategoryScale, 
+  LinearScale,  
+  BarElement,
+  LineElement,   
+  PointElement
+);
 
 interface Transaction {
   date: number;
@@ -12,16 +21,9 @@ interface Transaction {
   state: string;
 }
 
-interface Filters {
-  dateRange: { start: string; end: string } | null;
-  account: string;
-  industry: string;
-  state: string;
-}
-
 interface ChartsProps {
-  transactions: Transaction[];
-  filters: Filters;
+  transactions: Transaction[]; 
+  filters: any;
 }
 
 const Charts: React.FC<ChartsProps> = ({ transactions, filters }) => {
@@ -30,14 +32,7 @@ const Charts: React.FC<ChartsProps> = ({ transactions, filters }) => {
     datasets: [
       {
         label: 'Transações',
-        data: [
-          transactions
-            .filter((t) => t.transaction_type === 'deposit')
-            .reduce((acc, t) => acc + parseFloat(t.amount) / 100, 0),
-          transactions
-            .filter((t) => t.transaction_type === 'withdraw')
-            .reduce((acc, t) => acc + parseFloat(t.amount) / 100, 0),
-        ],
+        data: [3000, 2000],
         backgroundColor: ['#4caf50', '#f44336'],
       },
     ],

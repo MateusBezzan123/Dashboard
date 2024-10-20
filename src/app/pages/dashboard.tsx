@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { isAfter, isBefore } from 'date-fns';
 import Sidebar from '../components/Sidebar';
 import Card from '../components/Card';
@@ -61,7 +61,7 @@ const DashboardPage = () => {
       if (dateRange?.start && isBefore(transactionDate, new Date(dateRange.start))) {
         return false;
       }
-      
+
       if (dateRange?.end && isAfter(transactionDate, new Date(dateRange.end))) {
         return false;
       }
