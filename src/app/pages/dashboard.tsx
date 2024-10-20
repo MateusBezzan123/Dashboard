@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { isAfter, isBefore } from 'date-fns';
@@ -59,6 +61,7 @@ const DashboardPage = () => {
       if (dateRange?.start && isBefore(transactionDate, new Date(dateRange.start))) {
         return false;
       }
+      
       if (dateRange?.end && isAfter(transactionDate, new Date(dateRange.end))) {
         return false;
       }

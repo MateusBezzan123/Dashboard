@@ -1,4 +1,4 @@
-"use client"; // Ensure this component is treated as a client-side component
+"use client"; 
 
 import LoginPage from "./pages/login";
 
